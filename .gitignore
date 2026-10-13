@@ -1,0 +1,22 @@
+# Environment & Sensitive files
+.env
+.env.local
+.env.backup
+.env.swp
+
+# Vendor dependencies
+/vendor/
+composer.phar
+
+# Logs & Cache
+/logs/*
+!/logs/.gitkeep
+*.log
+
+# OS & IDE artifacts
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
