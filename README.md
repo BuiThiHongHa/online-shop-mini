@@ -60,3 +60,11 @@
 | `GET` | `/api/check-stock.php?id={id}` | `api/check-stock.php` |
 | `POST` | `/admin.php?controller=home&action=login` | `admin/controllers/home/login.php` |
 | `GET` | `/admin.php?controller=product` | `admin/controllers/product/index.php` |
+
+---
+
+## MA TRẬN VALIDATION DỮ LIỆU PHÍA SERVER (BACKEND)
+- **Thêm giỏ hàng (`cart/add/{id}`):** Kiểm tra `productId` tồn tại, `number_cart >= 1`, và tổng số lượng mua không vượt quá `total_stock` trong CSDL.
+- **Đặt hàng (`cart/checkout`):** Kiểm tra giỏ hàng không rỗng, họ tên/địa chỉ bắt buộc, SĐT đúng 10 số, xác thực CSRF Token, tính lại tổng tiền từ CSDL.
+- **Đăng nhập (`home/login`):** Email/User và mật khẩu không rỗng, kiểm tra CSRF Token, xác thực mật khẩu qua `password_verify()`.
+- **Thêm/Sửa Món ăn (`admin/product/edit`):** Quyền Admin/Staff, giá bán >= 0, tồn kho `total_stock >= 0`, kiểm tra đuôi file ảnh upload.
